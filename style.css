@@ -1,0 +1,229 @@
+/* Fil rouge : selecteur, dimensions, couleurs */
+/* Texte */
+/* Background */
+/* Boxes */
+/* Positioning */
+/* Flex */
+/* Grid */
+/* Pseudo classe */
+/* Responsive */
+/* Débug */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap');
+/* por des projet beaaucoup plus pratique on peut telecharger les polices. Parce que les liens d'import peuvent changer */
+@font-face {
+    font-family: "font-1";
+    src: url(./assets/NotoSans-Medium.ttf);
+}
+/* on a appelé notre police font-1 parce que si nous voulions changé de police ce nom est plus simple que le nom du fichier source */
+/* la police indiquée das un h1 ou div est toujours prioritaire par rapport à la police indiqué dans directement dans un body */
+
+/* depuis le débit du script on peut mettre tous les "margin" et "padding" à 0 */
+/* * {
+    margin: 0;
+    padding: 0;
+} */
+
+body {
+    font-family: "font-1", serif;
+    /* pour faire le background on utilise (background) ou background-color*/
+    /* on peut aller sur pixabay ou pexels pour télécharger des photos gratuites ; 
+    on peut utiliser center,right,left/cover 
+    e fonction des images on peut ussi (fixed) le background ou (no-repeat) pour éviter la répétition*/
+    background: url(./background.jpg) no-repeat fixed center/cover ;
+    
+
+}
+
+h1 {
+    /* 1rem correspond à 16px; on peut utiliser les 2; mais c'est mieux rem pour les textes */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 2.5rem; 
+    color: darkblue;
+    /* pour mettre l'ombrage on fait (text-shadow) la première valeur c'est X, la deuxième Y et la 3e valeur c'est le flou */
+    text-shadow: 5px 3px 0px #40b5b598;
+    /* Pour posiionner le texte */
+    text-align: center;
+    /* on utilise google font pour importer la police qu'on veut. On met le lien d'import au dessus de h1 et la règle css dans h1  */
+    font-family: 'Playfair Display', serif;
+}
+
+main {
+    background: whitesmoke;
+    /* pour le widht on peut utiliser le px ; vw ; ou % (le plus utiliser) */
+    width: 90%;
+    min-height: 500px;
+    /* pour la marge on peut indiquer 4  valeurs qui tournent dans le sens des aiguilles d'une montre. S'il y a juste 2 valeurs c'est haut-bas et gauche-droite;
+    on peut aussi utiliser directment margin-top margin-left... ; auto c'est pour toujours centrer */
+    margin: 10px auto;
+    /* padding pour controler la marge à l'interieur de la box */
+    padding: 15px;
+    border-radius: 15px;
+    /* sur chrome, dans inspecter on peu voir la box schématiser en bas dans Styles */
+    box-shadow: O 2px 12px 5px rgba(0, 0, 0, 0.342);
+
+}
+/* pour appeler un div on fait un point */
+.Positioning,
+.flexbox,
+.grid {
+    border: 2px solid skyblue;
+    padding: 10px;
+    margin-top:  20px;
+    border-radius: 10px;
+    /* on peut ajouter sur chrome l'extension "Ruler Measurement" pour mesuer les padding */
+   
+}
+
+/************ Positioning ***********/
+
+.Positioning {
+     /* on peut utiliser la "position relative" pour le titre "positioning" . Cela permetra que le cercle (ou autres choses à l'intérieur) qu'on crée en dessous du titre "positiong" puisse se mouvoir à l'intérieur de son cadre */
+     position: relative;
+}
+
+/* Pour fixer la "margin" pour h2 */
+h2 {
+    margin: 0;
+}
+
+/* pour appeler notre "id=circle"qui se trouve dans l'index.html on fait un # */
+#circle {
+    height: 60px;
+    width: 60px;
+    background: skyblue;
+    padding: 20px;
+    /* pour faire un cercle on utilise 50% de border-radius */
+    border-radius: 50% ;
+    /* pour détacher le cercle du titre Positioning, on doit lui donner une postion particulière */
+    position: absolute;
+    /* à partir de là on peut bouer le cercle comme l'on veut */
+    top: -10px;
+    right: 100px;
+    box-shadow:  0 2px 12px 5px rgba(51, 51, 51, 0.13);
+    /* pour mettre un objet en première plan, on utilise "z-index". Tous les objets ont à la base un z-index qui est égale à 0 */
+    /* l'objet avec le z-index la plus élévée sera toujours au premier plan. un z-index négative fait passer en  arrière plan  */
+    z-index: 1;
+}
+
+#rectangle {
+    height: 15px;
+    width: 100px;
+    background: slateblue;
+    padding: 20px;
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    /* on peut bouer un objet grace à sa taille, et sur l'axe qu'on veut */
+    /* transform: translate(-50%, -50%); */
+    /* transform: translateX(-50%) translateY(-50%); */
+    transform: translateX(-50%) 
+}
+
+/************ Flexbox ***********/
+/* ul pour appeler les ul */
+ul {
+    display: flex;
+    /* pour que les contenu se repartissent de manière égale */
+    justify-content: space-around;
+    padding: 0;
+}
+/* li pour appeler les li */
+li {
+    list-style-type: none;
+    font-size: 0.7rem;
+    height: 160px;
+    width: 160px;
+    background: turquoise;
+    /* Pour centrer verticalement les élements */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/************ Grid ***********/
+.grid-container {
+    /* pour afficher les grid avec 30% pour le premier et 70% pour le deuxième */
+    display: grid;
+    grid-template-columns: 30% 70%;
+    padding: 20px;
+}
+
+/* centrer le logo même l'image sera reduite*/
+.img {
+    text-align: center;
+}
+
+form {
+    /* pour ranger à l'intérieur de notre grid */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    /* pour dessiner la grid; i=input; ta=textara; bt=bouton */
+    grid-template-areas: 
+    "i1 i2"
+    "ta ta"
+    "bt bt";
+}
+
+/* pour bien dimensionner */
+input,
+textarea {
+    margin: 5px;
+    height: 45px;
+    border: 1px solid darkblue;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-family: "font-1";
+
+}
+
+/* on attribue nos id avec les valeurs données dan le grid-template-areas */
+#firstname {
+    grid-area: i1;
+}
+#surname {
+    grid-area: i2;
+}
+textarea {
+    grid-area: ta;
+    /* pour enlever l'option de redimensionnement sur le box */
+    resize: none;
+}
+input[type="submit"] {
+    grid-area: bt;
+    /* pour indiquer qu'on peut cloiquer sur le bouton */
+    cursor: pointer;
+    background: cyan;
+    /* pour le temps de transition sur le bouton */
+    transition: 0.4s;
+}
+/* faire en sorte que quand on passe sur le bouton il change de couloeur */
+input[type="submit"]:hover {
+    background: darkblue;
+    color: white;
+}
+
+/************ Responsive ***********/
+/* pour definir le comportment des objets dans les cadres definis quand nous reduisons les pages; pour connaitre les dimensions à partir des quelles le objets se barrent on peut aller sur chrome<inspecter après jour avec la taille de la page */
+@media screen and (max-width: 1000px) {
+    .grid-container {
+        display: block;
+    }
+}
+@media screen and (max-width: 780px) {
+    form {
+        /* pour ranger à l'intérieur de notre grid */
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        /* pour dessiner la grid; i=input; ta=textara; bt=bouton */
+        grid-template-areas: 
+        "i1"
+        "i2"
+        "ta"
+        "bt";
+    }
+}
